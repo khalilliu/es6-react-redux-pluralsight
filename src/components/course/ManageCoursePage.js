@@ -2,10 +2,9 @@ import React,{Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as courseActions from '../../actions/courseActions';
-import CourseList from './CourseList';
 
 
-class CoursesPages extends Component {
+class ManageCoursePage extends Component {
 	constructor(props,context){
 		super(props,context)
 	}
@@ -13,17 +12,12 @@ class CoursesPages extends Component {
 	render(){
 		return(
 			<div>
-				<h1>Course</h1>
-				<CourseList courses={this.props.courses} />
+				<h1>Manage Course</h1>
 			</div>
 		)
 	}
 }
 
-// CoursesPages.propTypes = {
-// 	dispatch: PropTypes.func.isRequired,
-// 	courses: PropTypes.array.isRequired
-// }
 
 const mapStateToProps = (state, ownProps) => {
 	return {
@@ -43,4 +37,4 @@ const mapDispatchToProps = (dispatch) => {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CoursesPages);
+export default connect(mapStateToProps, mapDispatchToProps)(ManageCoursePage);

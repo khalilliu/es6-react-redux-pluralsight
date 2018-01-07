@@ -43,8 +43,8 @@ const courses = [
   }
 ];
 
-function relaceAll(str,find,replace){
-	return str.replace(new RefExp(find,'g'),replace);
+function replaceAll(str,find,replace){
+	return str.replace(new RegExp(find,'g'),replace);
 }
 
 const generateId = (course) => {
