@@ -16,6 +16,30 @@ export const loadCourses = () => {
 	}
 }
 
+export const saveCourse = (course) => {
+	return  (dispacth) => {
+		return courseApi.saveCourse(course).then(savedCourse => {
+			course.id ? dispacth(updateCourseSuccess(savedCourse, course.id))
+				: dispacth(createCourseSuccess(savedCourse));
+		}).catch(err => {throw(err)})
+	}
+}
+ 
+const updateCourseSuccess = (course,id) => {
+	return {
+		type: types.UPDATE_COURSE_SUCCESS,
+		course:course,
+		id: id
+	}
+}
+
+const createCourseSuccess = (course) => {
+	return {
+		type: types.CREATE_COURSE_SUCCESS,
+		course
+	}
+}
+
 const loadCoursesSuccess = (courses) =>{
 	return {
 		type: types.LOAD_COURSES_SUCCESS,
