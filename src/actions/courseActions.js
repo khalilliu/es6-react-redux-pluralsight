@@ -18,7 +18,7 @@ export const loadCourses = () => {
 }
 
 export const saveCourse = (course) => {
-	return  (dispatch) => {
+	return (dispatch) => {
 		dispatch(beginAjaxCall())
 		return courseApi.saveCourse(course).then(savedCourse => {
 			course.id ? dispatch(updateCourseSuccess(savedCourse, course.id))
@@ -38,7 +38,7 @@ const updateCourseSuccess = (course,id) => {
 	}
 }
 
-const createCourseSuccess = (course) => {
+export const createCourseSuccess = (course) => {
 	return {
 		type: types.CREATE_COURSE_SUCCESS,
 		course

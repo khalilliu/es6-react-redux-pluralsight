@@ -4,9 +4,9 @@ import {bindActionCreators} from 'redux';
 import * as courseActions from '../../actions/courseActions';
 import CourseForm from './CourseForm';
 import toastr from 'toastr';
+import {authorsFormattedFormDropdown} from '../../selectors/Selectors';
 
-
-class ManageCoursePage extends Component {
+export class ManageCoursePage extends Component {
 	constructor(props,context){
 		super(props,context)
 		this.state = {
@@ -87,14 +87,10 @@ const mapStateToProps = (state, ownProps) => {
 		course = getCourseById(state.courses, courseId);
 	}
 
-	const authorsFormattedFormDropdown = state.authors.map(author => {
-		return {
-			value: author.id, text: author.firstName + ' ' + author.lastName
-		}
-	})
+
 	return {
 		course: course,
-		authors: authorsFormattedFormDropdown
+		authors: authorsFormattedFormDropdown(state.authors)
 	}
 }
 
